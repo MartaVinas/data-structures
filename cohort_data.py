@@ -116,7 +116,6 @@ def hogwarts_by_house(filename):
 
     all_hogwarts_sorted = [sorted(dumbledores_army),sorted(gryffindor),sorted(hufflepuff),sorted(ravenclaw),sorted(slytherin),sorted(ghosts),sorted(instructors)]
 
-
     return all_hogwarts_sorted
 
 
@@ -134,8 +133,17 @@ def all_students_tuple_list(filename):
     """
 
     student_list = []
+    student_tuple = ()
 
-    # Code goes here
+    file_object = open(filename)
+
+    for line in file_object:
+        line = line.rstrip()
+        line_list = line.split('|')
+        name = "{} {}".format(line_list[0],line_list[1])
+        if line_list[-1] != 'G' and line_list[-1] != "I":
+            student_tuple = (name, line_list[2], line_list[3], line_list[-1])
+            student_list.append(student_tuple)
 
     return student_list
 
@@ -161,6 +169,8 @@ def find_cohort_by_student_name(student_list):
     """
 
     # Code goes here
+    name = input("Who are you looking for? ")
+    if name[0]
 
     return "Student not found."
 
